@@ -12,6 +12,11 @@ function makeOrder (orders : string , customer : string): string {
     return `Order for ${customer} ; his order is ${orders}`
 }
 console.log(makeOrder("Malai Chai","Hasan"))
-
+// Union type
 let employees : "waiter" | "teaMaker" | "manager" = "waiter" ;
 employees = "teaMaker"
+// console.log(employees)
+
+let cups = Math.random() > 0.5 ? 10 : "5"
+console.log(cups)
+
