@@ -11,3 +11,8 @@ difference between npx tsc and npx ts-node src/index.ts
 difference between type annotation and type inference
 1. Type Annotation : return value-এর type স্পষ্টভাবে লিখে দাও
 2. Type Inference : type স্পষ্টভাবে না লিখলেও TypeScript value দেখে নিজে type নির্ধারণ করে,
+
+
+//  unknown type        [shurute any er moto achoron kore ,mane type declare na korlew error dey na. but use korar age obosshoi type ditei hobe.]
+// documentation : https://devblogs.microsoft.com/typescript/announcing-typescript-3-0-rc-2/#the-unknown-type
+// search difference between any and unknown in typescript
