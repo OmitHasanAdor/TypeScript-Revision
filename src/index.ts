@@ -138,3 +138,37 @@ function isChaiOrder(obj: any): obj is chaiOrder {
         typeof obj.withMalai === "boolean"
     )
 }
+
+function serveOrder (item : chaiOrder | string) {
+   if (isChaiOrder(item)) {
+        return `Chai type is ${item.type}, sugar: ${item.sugar}, ${
+            item.withMalai ? "with Malai" : "no Malai"
+        }`;
+    }
+        return `Simple chai order: ${item}`;
+}
+
+// console.log(
+//     serveOrder({
+//         type: "Masala Chai",
+//         sugar: 2,
+//         withMalai: true
+//     })
+// );
+
+// console.log(serveOrder("Regular Chai"));
+
+// type  manupulating
+type masalaChai ={
+    type: "masala"
+    spiceLevel: number
+}
+type gingerChai ={
+    type: "ginger"
+    amount: number
+}
+type elaichiChai ={
+    type: "elaichi"
+    arroma: number
+}
+
