@@ -91,23 +91,50 @@ function chaiSize(size: "small" | "medium" | "large" | number): unknown {
 
 // Making Class
 
-class MalaiChai{
+class MalaiChai {
     // Class-এর ভেতরে function-কে সাধারণত method বলা হয়।
-    serve(){
+    serve() {
         return "Malai Chai is served"
     }
 }
-class GingerChai{
-    serve(){
+class GingerChai {
+    serve() {
         return "Ginger Chai is served"
     }
 }
 
-function chai (chaiType : MalaiChai | GingerChai):string {
-   return `${chaiType.serve()}`
-}
+// instanceof chara korle and short form.
+// function chai (chaiType : MalaiChai | GingerChai):string {
+//    return `${chaiType.serve()}`
+// }
 
+// instanceof use kore korle
+function chai(chaiType: MalaiChai | GingerChai): string {
+    if (chaiType instanceof MalaiChai) {
+        return `${chaiType.serve()}`
+    } else if (chaiType instanceof GingerChai) {
+        return `${chaiType.serve()}`
+    }
+    return `there is no chai type. order default chai`
+}
 console.log(chai(new MalaiChai()))
 console.log(chai(new GingerChai()))
 
 
+// making customize type
+type chaiOrder = {
+    type: string
+    sugar: number
+    withMalai: boolean
+}
+
+function isChaiOrder(obj: any): obj is chaiOrder {
+    // type checking
+    return (
+        typeof obj === "object" &&
+        obj !== null &&
+        typeof obj.type === "string" &&
+        typeof obj.sugar === "number" &&
+        typeof obj.withMalai === "boolean"
+    )
+}
