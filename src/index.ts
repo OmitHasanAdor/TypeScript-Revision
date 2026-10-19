@@ -224,11 +224,11 @@ console.log(menu({ type: "ginger", amount: 10 }))
 
 let responce: any = "success"
 // Type Assertion মানে TypeScript-কে type সম্পর্কে বলা, value-কে convert করা নয়।
-let numericLength:number=(responce as string).length
+let numericLength: number = (responce as string).length
 console.log(numericLength)
 
-type book ={
-    name:string
+type book = {
+    name: string
 }
 let bookString = '{"name":"The Great Gatsby"}'
 /**
@@ -237,7 +237,7 @@ let bookString = '{"name":"The Great Gatsby"}'
 - as book — TypeScript-কে বলছে, এই value-টিকে book type হিসেবে treat করো।
  * 
  */
-let bookObj=JSON.parse(bookString) as book //1st
+let bookObj = JSON.parse(bookString) as book //1st
 
 // দুটিই লেখা যায়। তবে একটি গুরুত্বপূর্ণ পার্থক্য আছে:
 // - প্রথমটিতে as book দিয়ে Type Assertion করা হয়েছে।
@@ -246,6 +246,56 @@ let bookObj=JSON.parse(bookString) as book //1st
 console.log(bookObj.name)
 
 // DOM 
-const inputElement =document.getElementById("username") as HTMLInputElement
+const inputElement = document.getElementById("username") as HTMLInputElement
+
+// any and unknown
+
+let value: any;
+value = 24244
+value = "nkdv vd v"
+value = 3.6
+value = true
+value.toUpperCase()
+
+let newValue: unknown;
+newValue = 24244
+newValue = "nkdv vd v"
+newValue = 3.6
+newValue = true
+// newValue.toUpperCase()       ekhane error dibe
+
+if (typeof newValue === "string") {
+    newValue.toUpperCase()
+}
 
 
+// try catch block safety checks
+try {
+
+} catch (error) {
+    if (error instanceof Error) {
+        console.log(error.message)
+    }
+    console.log("Error", error)
+}
+
+const data: unknown = "typescript revision"
+// const strData: string= data /*ekhane evabe dile error dibe */
+const strData: string = data as string
+
+// never type
+
+type roles = "admin" | "user" | "guest"
+function redirectToRolebasedDash(role: roles) {
+    if (role === "admin") {
+        console.log("redirecting to admin dash")
+        return
+    } else if (role === "user") {
+        console.log("redirecting to user dash")
+        return
+    } else if (role === "guest") {
+        console.log("redirecting to guest dash")
+        return
+    }
+    role;  //etar type hobe never karon ekhane kono value return korbe na. mane role er value 3 ta type er modhye thakbe. tai ekhane never type hobe
+}
