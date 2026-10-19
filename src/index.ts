@@ -226,3 +226,26 @@ let responce: any = "success"
 // Type Assertion মানে TypeScript-কে type সম্পর্কে বলা, value-কে convert করা নয়।
 let numericLength:number=(responce as string).length
 console.log(numericLength)
+
+type book ={
+    name:string
+}
+let bookString = '{"name":"The Great Gatsby"}'
+/**
+ * এখানে দুটি কাজ হচ্ছে:
+- JSON.parse(bookString) — JSON string-কে JavaScript object-এ convert করছে।
+- as book — TypeScript-কে বলছে, এই value-টিকে book type হিসেবে treat করো।
+ * 
+ */
+let bookObj=JSON.parse(bookString) as book //1st
+
+// দুটিই লেখা যায়। তবে একটি গুরুত্বপূর্ণ পার্থক্য আছে:
+// - প্রথমটিতে as book দিয়ে Type Assertion করা হয়েছে।
+// - দ্বিতীয়টিতে : book দিয়ে Type Annotation করা হয়েছে।
+// let bookObj:book=JSON.parse(bookString) //2nd
+console.log(bookObj.name)
+
+// DOM 
+const inputElement =document.getElementById("username") as HTMLInputElement
+
+
