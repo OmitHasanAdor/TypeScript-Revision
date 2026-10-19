@@ -220,3 +220,9 @@ console.log(makeChai({ type: "masala", spiceLevel: 5 }))
 console.log(menu({ type: "masala", spiceLevel: 5 }))
 console.log(menu({ type: "ginger", amount: 10 }))
 
+// একে informalভাবে forceful type assertion বলা হতে পারে, তবে TypeScript-এর official terminology হলো Type Assertion।
+
+let responce: any = "success"
+// Type Assertion মানে TypeScript-কে type সম্পর্কে বলা, value-কে convert করা নয়।
+let numericLength:number=(responce as string).length
+console.log(numericLength)
