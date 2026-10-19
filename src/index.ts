@@ -61,6 +61,23 @@ for (const order of orderNumber) {
 //  unknown type        [shurute any er moto achoron kore ,mane type declare na korlew error dey na. but use korar age obosshoi type ditei hobe.]
 // documentation : https://devblogs.microsoft.com/typescript/announcing-typescript-3-0-rc-2/#the-unknown-type
 
+function isStringArray(arr: unknown): arr is string[] {
+    /* 
+Array.isArray(arr) — value-টি array কি না check করে।
+arr.every(...) — array-এর প্রতিটি element-এর জন্য condition check করে।
+typeof item === "string" — প্রতিটি element string কি না check করে।
+arr is string[] — function true return করলে TypeScript-কে জানায় যে arr একটি string array। 
+*/
+    return (
+        Array.isArray(arr) &&
+        arr.every((item) => typeof item === "string")
+    );
+}
+
+// console.log(isStringArray(["Tea", "Coffee"])); // true
+// console.log(isStringArray(["Tea", 10]));       // false
+// console.log(isStringArray("Masala Chai"));     // false
+// console.log(isStringArray([1, 2, 3]));         // false
 // search difference between any and unknown in typescript
 
 function chaiBreak(breaks: number | string): unknown {
@@ -139,13 +156,12 @@ function isChaiOrder(obj: any): obj is chaiOrder {
     )
 }
 
-function serveOrder (item : chaiOrder | string) {
-   if (isChaiOrder(item)) {
-        return `Chai type is ${item.type}, sugar: ${item.sugar}, ${
-            item.withMalai ? "with Malai" : "no Malai"
-        }`;
+function serveOrder(item: chaiOrder | string) {
+    if (isChaiOrder(item)) {
+        return `Chai type is ${item.type}, sugar: ${item.sugar}, ${item.withMalai ? "with Malai" : "no Malai"
+            }`;
     }
-        return `Simple chai order: ${item}`;
+    return `Simple chai order: ${item}`;
 }
 
 // console.log(
@@ -158,17 +174,49 @@ function serveOrder (item : chaiOrder | string) {
 
 // console.log(serveOrder("Regular Chai"));
 
-// type  manupulating
-type masalaChai ={
+// type  manupulating and narrowing
+type masalaChai = {
     type: "masala"
     spiceLevel: number
 }
-type gingerChai ={
+type gingerChai = {
     type: "ginger"
     amount: number
 }
-type elaichiChai ={
+type elaichiChai = {
     type: "elaichi"
     arroma: number
 }
+// এখানে curly brackets ({ }) ব্যবহার করা হয়নি কারণ আপনি কোনো Object Type ডিফাইন করছেন না, বরং একটি Union Type ডিফাইন করছেন।
+type chai = masalaChai | gingerChai | elaichiChai
+
+function makeChai(order: chai) {
+    // switch Statement 
+    switch (order.type) {
+        case "masala":
+            return `${order.type} is served  made with ${order.spiceLevel}`
+        case "elaichi":
+            return `${order.type} is served made with ${order.arroma}`
+        case "ginger":
+            return `${order.type} is served made with ${order.amount}`
+
+        default:
+            break;
+    }
+}
+
+function menu(order: masalaChai | gingerChai) {
+    // যখন কোনো অবজেক্টে নির্দিষ্ট type প্রপার্টি দিয়ে Discriminated Union করা থাকে না বা অন্য কোনো প্রপার্টি চেক করতে হয়, তখন "propertyName" in object ব্যবহার করা একটি খুব প্রফেশনাল ও পারফেক্ট অ্যাপ্রোচ।
+    if ("spiceLevel" in order) {
+        return `${order.type} chai is served made with spice level ${order.spiceLevel}`;
+    } else if ("amount" in order) {
+        return `${order.type} chai is served made with ${order.amount}g ginger`;
+    } else {
+        return `there is no chai in menu`
+    }
+}
+
+console.log(makeChai({ type: "masala", spiceLevel: 5 }))
+console.log(menu({ type: "masala", spiceLevel: 5 }))
+console.log(menu({ type: "ginger", amount: 10 }))
 
