@@ -380,3 +380,64 @@ console.log(chai6.price); // 30
 //     this.name = name;
 //     this.price = price;
 // }
+
+
+/**
+ *class Chai {
+    name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+ * Ekhane chai1.serve() call korle method-ta current object-er name use kore message return kore.
+    serve() {
+        return `${this.name} is served!`;
+    }
+}
+
+const chai1 = new Chai("Malai Chai");
+
+console.log(chai1.serve());
+// Malai Chai is served!
+ */
+
+type BaseChai={teaLeafs: number}
+type Extra={masala:boolean}
+type ChaiType=BaseChai & Extra
+
+const cup:ChaiType={
+    teaLeafs:10,
+    masala: true
+}
+
+// optional values
+
+type User={
+    username:string;
+    bio?:string
+}
+
+const u1:User={
+    username:"Hasan",
+}
+const u2:User={
+    username:"Omit",
+    bio:"hello iam Omit hasan"
+}
+
+// readonly  value
+
+type Config={
+ readonly appName:string;
+ description:string ;
+
+}
+
+const cfg:Config={
+    appName:"OM Hasan",
+    description:"hello iam Omit hasan"
+}
+
+// cfg.appName="New Name"  // ekhane error dibe karon appName readonly
+cfg.description="New Description"  // ekhane error dibe na karon description readonly na
+
