@@ -16,3 +16,22 @@ difference between type annotation and type inference
 //  unknown type        [shurute any er moto achoron kore ,mane type declare na korlew error dey na. but use korar age obosshoi type ditei hobe.]
 // documentation : https://devblogs.microsoft.com/typescript/announcing-typescript-3-0-rc-2/#the-unknown-type
 // search difference between any and unknown in typescript
+
+
+
+type
+Reusable type বা structure তৈরি করে।
+
+যেমন: type Tea = { water: number }
+
+
+interface
+Object বা class-এর জন্য structure/contract define করে।
+
+যেমন: interface Tea { water: number }
+
+
+implements
+Class নির্দিষ্ট structure মেনে চলছে কি না, সেটা check করে।
+
+যেমন: class Chai implements Tea { water = 100 }

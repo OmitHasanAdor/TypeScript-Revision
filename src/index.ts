@@ -299,3 +299,84 @@ function redirectToRolebasedDash(role: roles) {
     }
     role;  //etar type hobe never karon ekhane kono value return korbe na. mane role er value 3 ta type er modhye thakbe. tai ekhane never type hobe
 }
+
+// interfaces and type alias
+
+
+// evabe korle readable hoy na. tai interface or type alias use kora valo
+// function getChaiDetails(chai: { type: string; sugar: number; withMalai: boolean }) { } 
+// function getChaiDetails2(chai: { type: string; sugar: number; withMalai: boolean }) { }
+
+type getChai = {
+    type: string;
+    sugar: number;
+    withMalai: boolean
+}
+// type দিয়ে একটি reusable type তৈরি করতে পারো।
+function getChaiDetails (order :getChai) {
+    console.log(`${order.type}`)
+}
+
+function getChaiDetails2 (order :getChai) {
+    console.log(`${order.type}`)
+}
+
+type teaRecipe={
+    water: number;
+    milk:number
+}
+
+// implements teaRecipe — TypeScript-কে বলছে, এই class-কে teaRecipe-এর structure মেনে চলতে হবে।
+class makeChai2 implements teaRecipe{
+    water=100;
+    milk=50;
+}
+
+// interface evabe likhte parbo
+interface teaRecipe2{
+    water: number;
+    milk:number
+}
+
+// customize data type er khetre interface
+
+interface cupSize{
+    size: "small" | "medium" | "large";
+}
+
+class makeChai3 implements cupSize{
+   size: "small" | "medium" | "large"="small"
+}
+
+const chai2 = new makeChai3();
+
+console.log(chai2.size); // "small"
+
+// Kintu jodi 100 ta chai-er order thake? Prottekbar object likhte hobe. Eita aro easy korar jonno class use korte pari.
+class Chai4 {
+    name: string;
+    price: number;
+
+    // prottek chai-er name ar price alada hobe. Kono chai 50 taka, kono chai 30 taka. // Tokhon class-er vitore constructor use korte pari.
+    constructor(name: string, price: number) {
+        this.name = name;
+        this.price = price;
+    }
+}
+// new Chai()
+// Oi blueprint diye notun object banay.
+const chai5 = new Chai4("Malai Chai", 50);
+const chai6 = new Chai4("Masala Chai", 30);
+
+console.log(chai5.name);  // Malai Chai
+console.log(chai5.price); // 50
+
+console.log(chai6.name);  // Masala Chai
+console.log(chai6.price); // 30
+
+// constructor holo special method, ja new Chai(...) diye object create korar somoy automatically call hoy.
+
+// constructor(name: string, price: number) {
+//     this.name = name;
+//     this.price = price;
+// }
