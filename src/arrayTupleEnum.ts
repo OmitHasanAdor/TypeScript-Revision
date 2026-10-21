@@ -59,3 +59,67 @@ const postCodeAndRoadNum: readonly [number, number] = [1211, 3]
 
 // named Tuple
 const chaiOrderDetails: [name: string, prices: number, isHot: boolean] = ["Masala", 25, true]
+
+// unexpected tuple behaviour
+let tup:[string, number, boolean] = ["Masala", 25, true]
+// tup.push("Ginger") // ❌ Error dibe na! unexpected behaviour. tuple er size fixed thakbe, but push kora jabe.
+
+
+// enum
+
+enum CupSize {
+    Small,
+    Medium,
+    Large
+}
+
+const size=CupSize.Medium
+console.log(size) // 1
+
+// Auto-incremental Enum
+// Auto-incremental Enum মানে TypeScript-এ Enum-এর numeric value স্বয়ংক্রিয়ভাবে বাড়তে থাকা।
+enum orderStatus{
+    /*
+    প্রথম value ডিফল্টভাবে 0 থেকে শুরু হয়। পরের প্রতিটি value আগেরটির চেয়ে 1 বেশি হয়। নিজে value দিলে পরেরটি সেখান থেকে বাড়ে।
+    */
+    Pending=100,
+    Deliverd,
+    Cancelled,
+    NotOrdered
+}
+
+// String Enum
+enum ChaiType{
+    Masala= "Masala",
+    Ginger="ginger",
+    Malaia='malai',
+    Elaichi='elaichi'
+}
+
+function chaiList ( type : ChaiType) {
+    console.log(`Your ${type} chai is ready!`)
+}
+
+chaiList(ChaiType.Masala)
+chaiList(ChaiType.Ginger)
+// chaiList("masala"); // Error dibe 
+
+// eta good practice na. jekono ek dhoroner data type e enum a rakha uchit
+enum RandomEnum{
+    Id=1,
+    Name='Hasan'
+}
+
+// using const variable
+
+const enum ChaiSize{
+    Low=1,
+    Medium=2,
+    High
+}
+
+function selectChaiSize (size :ChaiSize) {
+    console.log(`Your chai size is ${size}`)
+}
+
+selectChaiSize(ChaiSize.High)
