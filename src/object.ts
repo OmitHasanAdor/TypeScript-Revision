@@ -70,6 +70,7 @@ type order={
 }
 
 // use of partial
+// Partial<order> — সব property optional করে দেয়।
 const updateOrder=( orders : Partial<order>)=>{
     // JavaScript/TypeScript-এ কোনো Object-কে সরাসরি Template Literal (`...`) বা String-এর ভেতরে ঢোকালে সেটি আউটপুটে [object Object] হিসেবে প্রিন্ট হয়।  chai with [object Object]
     // console.log(`chai with ${orders}`)
@@ -88,8 +89,10 @@ type ChaiOrder={
     quantity:number;
     isHot: boolean;
     ingrediants: string[];
+    secretIngrediants?:string;
 }
 
+// Required<ChaiOrder> — সব property required করে দেয়।
     // Required
 const placeOrder=(order: Required<ChaiOrder>)=>{
     console.log("placing order with:", order);
@@ -98,14 +101,21 @@ placeOrder({
     name:'ginger',
     quantity:3 ,
     isHot:true,
-    ingrediants:['ginger','sugar','milk']
+    ingrediants:['ginger','sugar','milk'],
+    //  secretIngrediants?:string[] optional holew require use korar fole etaw call kortei hobe
+     secretIngrediants: "special spice mix"
 })
 
 // Pick
-
+// Pick<ChaiOrder, "name" | "isHot" > — নির্দিষ্ট property বেছে নেয়।
 type ChaiInfo =Pick<ChaiOrder, "name" | "isHot" >
 const placeOrderWithPick:ChaiInfo = {
       name:'ginger',
     isHot:true
 }
+
+// Omit<ChaiInfo, "secretIngrediants"> — নির্দিষ্ট property বাদ দেয়।
+// Omit 
+type PublicChai= Omit<ChaiInfo, "secretIngrediants">
+
 
