@@ -33,13 +33,29 @@ const chaiOrder: chaiList[] = [
 ]
 
 // readonly array
-const bestCheifs: readonly string[]=['Hasan', 'Omit', 'Ador']
+const bestCheifs: readonly string[] = ['Hasan', 'Omit', 'Ador']
 // bestCheifs.push('Rasel') // ❌ Error dibe! readonly array te push kora jabe na
 
 // multi dimensional array
 // two dimensional array
-const tables: number [][]=[
-    [1,2,3],
-    [4,5,6],
-    [7,8,9]
+const tables: number[][] = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
 ]
+
+// Tuple 
+
+// Array-এর মতো, কিন্তু প্রতিটি position-এ কোন type-এর value থাকবে, তা নির্দিষ্ট করে দেওয়া যায়।
+let chaiType: [string, number, boolean];
+chaiType = ["Masala", 25, true]
+
+// optional Tuple
+let user: [string, number, boolean?];
+user = ['omit', 20]
+
+// readonly Tuple
+const postCodeAndRoadNum: readonly [number, number] = [1211, 3]
+
+// named Tuple
+const chaiOrderDetails: [name: string, prices: number, isHot: boolean] = ["Masala", 25, true]

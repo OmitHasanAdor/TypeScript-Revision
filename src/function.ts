@@ -34,4 +34,3 @@ function createChai (order:{
 }) {
     return `Your ${order.size} ${order.type} chai with ${order.sugar} sugar is ready!`
 }
-
