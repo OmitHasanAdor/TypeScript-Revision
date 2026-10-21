@@ -69,3 +69,43 @@ type order={
     address: Address
 }
 
+// use of partial
+const updateOrder=( orders : Partial<order>)=>{
+    // JavaScript/TypeScript-এ কোনো Object-কে সরাসরি Template Literal (`...`) বা String-এর ভেতরে ঢোকালে সেটি আউটপুটে [object Object] হিসেবে প্রিন্ট হয়।  chai with [object Object]
+    // console.log(`chai with ${orders}`)
+
+    console.log("Updating order with:", orders);
+
+}
+
+// // আপনি শুধুমাত্র items পাঠিয়েছেন, বাকি id এবং address না পাঠালেও Partial-এর কারণে কোনো Error দেয়নি!
+updateOrder({items: [{name:'ginger',quantity:3}]})
+// problem hocche এটাও valid hobe er khetre
+updateOrder({});
+
+type ChaiOrder={
+    name: string;
+    quantity:number;
+    isHot: boolean;
+    ingrediants: string[];
+}
+
+    // Required
+const placeOrder=(order: Required<ChaiOrder>)=>{
+    console.log("placing order with:", order);
+}
+placeOrder({
+    name:'ginger',
+    quantity:3 ,
+    isHot:true,
+    ingrediants:['ginger','sugar','milk']
+})
+
+// Pick
+
+type ChaiInfo =Pick<ChaiOrder, "name" | "isHot" >
+const placeOrderWithPick:ChaiInfo = {
+      name:'ginger',
+    isHot:true
+}
+
