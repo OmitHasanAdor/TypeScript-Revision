@@ -37,3 +37,5 @@ Class নির্দিষ্ট structure মেনে চলছে কি ন
 যেমন: class Chai implements Tea { water = 100 }
 
 class ki . eta ki kaje lage? and class er bhitor method kn use kori and contructor er kaj ki?
+
+polymorphism ki abstraction ki?

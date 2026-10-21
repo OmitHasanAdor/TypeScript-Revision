@@ -63,27 +63,27 @@ class ChaiWithTruePrivateField {
 const chaiPrv = new ChaiWithTruePrivateField()
 chaiPrv.getSecretIngredients()
 
-class Cup{
+class Cup {
     // readonly eta mane hocche ekhane ekbar assign korte parbe but change korte parbe na
-    readonly Capacity:number=200;
-    constructor(Capacity:number){
-        this.Capacity=Capacity
+    readonly Capacity: number = 200;
+    constructor(Capacity: number) {
+        this.Capacity = Capacity
     }
 }
 
 // TypeScript-এর Getter এবং Setter-এর উদাহরণ।
-class ModernChai{
-    private _sugar:number=2
+class ModernChai {
+    private _sugar: number = 2
     // Getter
     // get sugar() → sugar-এর value পড়তে ব্যবহার হয়।
-    get sugar(){
+    get sugar() {
         return this._sugar
     }
     // Setter
     // set sugar(value) → sugar-এর value পরিবর্তন করতে ব্যবহার হয় এবং এখানে validation করে।
-    set sugar(value:number){
-         if(value>5) throw new Error("Too much sweet");
-         this._sugar = value
+    set sugar(value: number) {
+        if (value > 5) throw new Error("Too much sweet");
+        this._sugar = value
     }
 }
 
@@ -91,4 +91,63 @@ const chaiModern = new ModernChai()
 // Getter
 chaiModern.sugar // 2
 // Setter
-chaiModern.sugar=4
+chaiModern.sugar = 4
+
+// static members
+
+class EkChai {
+    /*
+    static property হলো class-এর নিজস্ব property, object-এর নয়।
+    তাই সরাসরি class-এর নাম দিয়ে access করতে পারো:
+    console.log(EkChai.shopName); // Chai code cafe
+
+    */
+    static shopName = "Chai code cafe"
+/**
+ এখানে constructor()-এ flavor নেওয়া হয়েছে, কারণ প্রতিটি নতুন chai তৈরি করার সময় তার flavor আলাদা হতে পারে।
+
+ const chai1 = new EkChai("Masala");
+const chai2 = new EkChai("Ginger");
+
+console.log(EkChai.shopName); // Chai code cafe
+console.log(chai1.flavor);    // Masala
+console.log(chai2.flavor);    // Ginger
+ */
+    constructor(public flavor: string) {
+
+    }
+}
+console.log(EkChai.shopName)
+
+// abstract class
+/**
+ TypeScript-এ abstract মানে হলো অসম্পূর্ণ class বা method, যেটাকে অন্য class-এ extend করে complete করতে হয়।
+ - abstract class → সরাসরি new দিয়ে object তৈরি করা যায় না।
+- abstract method → শুধু method-এর structure বলে দেয়, body থাকে না। Child class-কে method-টি implement করতে হয়।
+মনে রাখবে: abstract হলো একটা blueprint—কী করতে হবে বলে দেয়, কিন্তু কীভাবে করতে হবে সেটা child class নির্ধারণ করে।
+
+ */
+abstract class MakeChai{
+    abstract Maker():void
+}
+
+class chaiMaker extends MakeChai{
+    Maker() {
+        console.log(`Making chai...`) 
+    }
+}
+
+class Heater{
+    heat(){
+
+    }
+}
+class HotChai  {
+    constructor(private heater: Heater) {
+        
+    }
+    make(){
+        // ekhane heater.heat() diye chai garom kora hocche, kintu Heater class-er kono instance ekhane pass korte hobe.
+        this.heater.heat()
+    }
+}
