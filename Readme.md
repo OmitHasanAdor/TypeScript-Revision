@@ -6,6 +6,9 @@ npm i -D typescript
 3rd step
 npx tsc --init
 
+for install axios
+npm i axios
+
 difference between npx tsc and npx ts-node src/index.ts
 
 difference between type annotation and type inference
