@@ -42,3 +42,10 @@ Class নির্দিষ্ট structure মেনে চলছে কি ন
 class ki . eta ki kaje lage? and class er bhitor method kn use kori and contructor er kaj ki?
 
 polymorphism ki abstraction ki?
+
+kono library ba framework er type declaration install
+npm i -D @types/libraryName
+তবে libraryName-এর জায়গায় আসল library-এর নাম বসাতে হবে।
+npm i -D @types/node
+React-এর জন্য সাধারণত:
+npm i -D @types/react @types/react-dom
