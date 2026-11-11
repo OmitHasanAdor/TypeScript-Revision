@@ -37,10 +37,10 @@ interface TeaMachine{
 
 const machine:TeaMachine={
     start(){
-        console.log("start")
+        // console.log("start")
     },
     stop() {
-        console.log("stop")
+        // console.log("stop")
     }
 }
 

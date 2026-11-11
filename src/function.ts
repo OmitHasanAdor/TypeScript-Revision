@@ -1,6 +1,6 @@
 // only params type defines
 function makeChai (type :string , cup: number) {
-    console.log(`Making ${cup} cups of ${type}`)
+    // console.log(`Making ${cup} cups of ${type}`)
 }
 makeChai("Malai Chai",2)
 
@@ -13,7 +13,7 @@ function getChaiPrice ():number {
 
 // TypeScript-এ void মানে হলো কোনো function নির্দিষ্ট কোনো value return করে না।
 function logChai(): void {
-    console.log('chai is readey')
+    // console.log('chai is readey')
 }
 
 // optional params declare  [egulo function er end a declare kora good practice]

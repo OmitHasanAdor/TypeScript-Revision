@@ -14,7 +14,7 @@ user.name = "Hasan";
 user.age = 22; 
 // প্রপার্টি ডিলিটও করা যাবে:
 delete user.role; 
-console.log(user); // { name: "Hasan", age: 22 }
+// // console.log(user); // { name: "Hasan", age: 22 }
 
 // object type define
 
@@ -75,7 +75,7 @@ const updateOrder=( orders : Partial<order>)=>{
     // JavaScript/TypeScript-এ কোনো Object-কে সরাসরি Template Literal (`...`) বা String-এর ভেতরে ঢোকালে সেটি আউটপুটে [object Object] হিসেবে প্রিন্ট হয়।  chai with [object Object]
     // console.log(`chai with ${orders}`)
 
-    console.log("Updating order with:", orders);
+    // console.log("Updating order with:", orders);
 
 }
 
@@ -95,7 +95,7 @@ type ChaiOrder={
 // Required<ChaiOrder> — সব property required করে দেয়।
     // Required
 const placeOrder=(order: Required<ChaiOrder>)=>{
-    console.log("placing order with:", order);
+    // console.log("placing order with:", order);
 }
 placeOrder({
     name:'ginger',

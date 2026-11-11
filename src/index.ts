@@ -134,8 +134,8 @@ function chai(chaiType: MalaiChai | GingerChai): string {
     }
     return `there is no chai type. order default chai`
 }
-console.log(chai(new MalaiChai()))
-console.log(chai(new GingerChai()))
+// console.log(chai(new MalaiChai()))
+// console.log(chai(new GingerChai()))
 
 
 // making customize type
@@ -216,16 +216,16 @@ function menu(order: masalaChai | gingerChai) {
     }
 }
 
-console.log(makeChai({ type: "masala", spiceLevel: 5 }))
-console.log(menu({ type: "masala", spiceLevel: 5 }))
-console.log(menu({ type: "ginger", amount: 10 }))
+// console.log(makeChai({ type: "masala", spiceLevel: 5 }))
+// console.log(menu({ type: "masala", spiceLevel: 5 }))
+// console.log(menu({ type: "ginger", amount: 10 }))
 
 // একে informalভাবে forceful type assertion বলা হতে পারে, তবে TypeScript-এর official terminology হলো Type Assertion।
 
 let responce: any = "success"
 // Type Assertion মানে TypeScript-কে type সম্পর্কে বলা, value-কে convert করা নয়।
 let numericLength: number = (responce as string).length
-console.log(numericLength)
+// console.log(numericLength)
 
 type book = {
     name: string
@@ -243,7 +243,7 @@ let bookObj = JSON.parse(bookString) as book //1st
 // - প্রথমটিতে as book দিয়ে Type Assertion করা হয়েছে।
 // - দ্বিতীয়টিতে : book দিয়ে Type Annotation করা হয়েছে।
 // let bookObj:book=JSON.parse(bookString) //2nd
-console.log(bookObj.name)
+// console.log(bookObj.name)
 
 // DOM 
 const inputElement = document.getElementById("username") as HTMLInputElement
@@ -274,9 +274,9 @@ try {
 
 } catch (error) {
     if (error instanceof Error) {
-        console.log(error.message)
+        // console.log(error.message)
     }
-    console.log("Error", error)
+    // console.log("Error", error)
 }
 
 const data: unknown = "typescript revision"
@@ -288,13 +288,13 @@ const strData: string = data as string
 type roles = "admin" | "user" | "guest"
 function redirectToRolebasedDash(role: roles) {
     if (role === "admin") {
-        console.log("redirecting to admin dash")
+        // console.log("redirecting to admin dash")
         return
     } else if (role === "user") {
-        console.log("redirecting to user dash")
+        // console.log("redirecting to user dash")
         return
     } else if (role === "guest") {
-        console.log("redirecting to guest dash")
+        // console.log("redirecting to guest dash")
         return
     }
     role;  //etar type hobe never karon ekhane kono value return korbe na. mane role er value 3 ta type er modhye thakbe. tai ekhane never type hobe
@@ -314,11 +314,11 @@ type getChai = {
 }
 // type দিয়ে একটি reusable type তৈরি করতে পারো।
 function getChaiDetails (order :getChai) {
-    console.log(`${order.type}`)
+    // console.log(`${order.type}`)
 }
 
 function getChaiDetails2 (order :getChai) {
-    console.log(`${order.type}`)
+    // console.log(`${order.type}`)
 }
 
 type teaRecipe={
@@ -350,7 +350,7 @@ class makeChai3 implements cupSize{
 
 const chai2 = new makeChai3();
 
-console.log(chai2.size); // "small"
+// console.log(chai2.size); // "small"
 
 // Kintu jodi 100 ta chai-er order thake? Prottekbar object likhte hobe. Eita aro easy korar jonno class use korte pari.
 class Chai4 {
@@ -368,11 +368,11 @@ class Chai4 {
 const chai5 = new Chai4("Malai Chai", 50);
 const chai6 = new Chai4("Masala Chai", 30);
 
-console.log(chai5.name);  // Malai Chai
-console.log(chai5.price); // 50
+// console.log(chai5.name);  // Malai Chai
+// console.log(chai5.price); // 50
 
-console.log(chai6.name);  // Masala Chai
-console.log(chai6.price); // 30
+// console.log(chai6.name);  // Masala Chai
+// console.log(chai6.price); // 30
 
 // constructor holo special method, ja new Chai(...) diye object create korar somoy automatically call hoy.
 

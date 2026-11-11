@@ -34,7 +34,7 @@ class ChaiWithAccessModifier {
     }
     reveal() {
         this.secretIngrediants // class-এর ভেতরে private property access করা যাবে।
-        console.log(`The secret ingrediants of ${this.flavor} chai is ${this.secretIngrediants}`)
+        // console.log(`The secret ingrediants of ${this.flavor} chai is ${this.secretIngrediants}`)
     }
 
 }

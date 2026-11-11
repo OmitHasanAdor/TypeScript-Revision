@@ -1,5 +1,5 @@
 function wrapInArr <T> (items : T): T {
-    console.log(`the array is ${items}`)
+    // console.log(`the array is ${items}`)
     return items
 }
 

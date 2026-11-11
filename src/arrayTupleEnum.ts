@@ -97,7 +97,7 @@ enum ChaiType{
 }
 
 function chaiList ( type : ChaiType) {
-    console.log(`Your ${type} chai is ready!`)
+    // console.log(`Your ${type} chai is ready!`)
 }
 
 chaiList(ChaiType.Masala)
@@ -119,7 +119,7 @@ const enum ChaiSize{
 }
 
 function selectChaiSize (size :ChaiSize) {
-    console.log(`Your chai size is ${size}`)
+    // console.log(`Your chai size is ${size}`)
 }
 
 selectChaiSize(ChaiSize.High)
